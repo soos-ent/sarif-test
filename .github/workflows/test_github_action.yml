@@ -1,0 +1,22 @@
+# This is a basic workflow to help you get started with Actions
+
+name: SOOS DAST GitHub Actions Test
+
+# Controls when the workflow will run
+on: [push]
+
+jobs:
+  soos_dast_analysis_example:
+    name: A job to test new action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run SOOS DAST Analysis
+        uses: SOOS-ABenassi/soos-dast-github-actions@v1-beta
+        with:
+          client_id: ${{ secrets.SOOS_CLIENT_ID }}
+          api_key: ${{ secrets.SOOS_API_KEY }}
+          scan_mode: 'baseline'
+          api_url: "https://dev-api.soos.io/api/"
+          target_url: "https://brokencrystals.com/"
+          sarif: true
+          gpat: ${{ secrets.SOOS_GITHUB_PAT }}
