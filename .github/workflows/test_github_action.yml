@@ -16,7 +16,7 @@ jobs:
         env:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
-          project_name: ${{ github.repository }}
+          project_name: "sarif-test"
           branch_name: ${{ github.ref }}
           commit_hash: ${{ github.sha }}
           scan_mode: 'baseline'
