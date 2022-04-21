@@ -1,20 +1,25 @@
-name: SOOS DAST GitHub Actions
-
-# Controls when the workflow will run
+name: "DAST Analysis SARIF Report"
 on: [push]
 
 jobs:
   soos_dast_analysis_example:
-    name: SOOS DAST Baseline Analysis
+    name: A job to test new action
     runs-on: ubuntu-latest
+    container:
+      image: soosio/dast:latest
     steps:
       - name: Run SOOS DAST Analysis
-        uses: soos-io/soos-dast-github-action@v1.0.0-beta
-        with:
+        id: soos-dast-analysis
+        working-directory: /zap
+        run: |
+          python3 main.py --clientId="$client_id" --apiKey="$api_key" --projectName="$project_name" --scanMode="$scan_mode" --apiURL="$api_url" --branchName="$branch_name" --commitHash="$commit_hash" --sarif=True --gpat="$gpat" $target_url
+        env:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
+          project_name: ${{ github.repository }}
+          branch_name: ${{ github.ref }}
+          commit_hash: ${{ github.sha }}
           scan_mode: 'baseline'
           api_url: "https://qa-api.soos.io/api/"
           target_url: "https://brokencrystals.com/"
-          sarif: true
           gpat: ${{ secrets.SOOS_GITHUB_PAT }}
