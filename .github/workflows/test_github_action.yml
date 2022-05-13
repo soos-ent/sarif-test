@@ -1,9 +1,9 @@
-name: "DAST Analysis SARIF Report"
+name: "SOOS DAST Scan"
 on: [push]
 
 jobs:
   soos_dast_analysis_example:
-    name: A job to test new action
+    name: Run SOOS DAST
     runs-on: ubuntu-latest
     container:
       image: soosio/dast:latest
@@ -20,6 +20,6 @@ jobs:
           branch_name: ${{ github.ref }}
           commit_hash: ${{ github.sha }}
           scan_mode: 'baseline'
-          api_url: "https://qa-api.soos.io/api/"
+          api_url: "https://api.soos.io/api/"
           target_url: "https://brokencrystals.com/"
           gpat: ${{ secrets.SOOS_GITHUB_PAT }}
