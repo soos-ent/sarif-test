@@ -12,7 +12,7 @@ jobs:
         id: soos-dast-analysis
         working-directory: /zap
         run: |
-          python3 main.py --clientId="$client_id" --apiKey="$api_key" --projectName="$project_name" --scanMode="$scan_mode" --apiURL="$api_url" --branchName="$branch_name" --commitHash="$commit_hash" --sarif=True --gpat="$gpat" $target_url
+          python3 main.py --clientId="$client_id" --apiKey="$api_key" --projectName="$project_name" --scanMode="$scan_mode" --apiURL="$api_url" --branchName="$branch_name" --commitHash="$commit_hash" --outputFormat="sarif" $target_url
         env:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
