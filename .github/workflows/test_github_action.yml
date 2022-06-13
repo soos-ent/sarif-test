@@ -20,6 +20,6 @@ jobs:
           branch_name: ${{ github.ref }}
           commit_hash: ${{ github.sha }}
           scan_mode: 'baseline'
-          api_url: "https://api.soos.io/api/"
+          api_url: "https://dev-api.soos.io/api/"
           target_url: "https://brokencrystals.com/"
           gpat: ${{ secrets.SOOS_GITHUB_PAT }}
