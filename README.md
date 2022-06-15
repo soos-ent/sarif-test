@@ -4,7 +4,6 @@
 
 ## Development
 
-
 From your terminal:
 
 ```sh
